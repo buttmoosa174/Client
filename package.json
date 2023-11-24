@@ -1,4 +1,5 @@
 {
+  "proxy": "https://ominous-robot-5w9r5q4v4rrf4p9w-8080.app.github.dev/api/users",
   "name": "stackblitz-starters-g52acz",
   "version": "0.0.0",
   "private": true,
@@ -8,6 +9,7 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.18",
     "@mui/material": "^5.14.18",
+    "axios": "^1.6.2",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-router-dom": "^6.20.0",
@@ -20,6 +22,7 @@
     "eject": "react-scripts eject"
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "react-scripts": "latest"
   },
   "browserslist": {

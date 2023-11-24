@@ -12,10 +12,56 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import axios from "axios";
+
+// Create a custom theme
+const theme = createTheme({
+  palette: {
+    // Set the background color here
+    background: {
+       // Change this to your desired background color'
+    },
+
+
+  },
+});
+
 
 const Register = () => {
+
+  // const handleSubmit = async (values) => {
+  //   alert('Hello')
+  //   // console.log('checkss', values);
+  //   var name = document.getElementById('name').value;
+  //   var email = document.getElementById('email').value;
+  //   var password = document.getElementById('password').value;
+
+  //   try {
+  //     alert('try')
+  //     const res=await axios.post("/api/users/register", {'name': name, 'email': email, 'password': password, });
+  //     console.log(res, 'data');
+  //     alert("Registeration Successfull");
+  //     // navigate("/");
+  //   } catch (error) {
+  //     alert("something went wrong");
+  //   }
+  // }
+
+
+  const handleSubmit = async (values) => {
+    try {
+      // setLoading(true);
+      const res=await axios.post("/api/users/register", values);
+      console.log(res, 'data');
+      alert("Registeration Successfull");
+      // navigate("/login");
+    } catch (error) {
+      alert("something went wrong");
+    }
+  };
+
   return (
-    <ThemeProvider theme={defaultTheme}>
+    <ThemeProvider theme={theme}>
     <Container component="main" maxWidth="xs">
       <CssBaseline />
       <Box
@@ -32,26 +78,15 @@ const Register = () => {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <Box component="form" noValidate onSubmit={handleSubmit} sx={{ mt: 3 }}>
+        <Box component="form" noValidate  onFinish={handleSubmit}  sx={{ mt: 3 }}>
           <Grid container spacing={2}>
-            <Grid item xs={12} sm={6}>
-              <TextField
-                autoComplete="given-name"
-                name="firstName"
-                required
-                fullWidth
-                id="firstName"
-                label="First Name"
-                autoFocus
-              />
-            </Grid>
-            <Grid item xs={12} sm={6}>
+            <Grid item xs={12}>
               <TextField
                 required
                 fullWidth
-                id="lastName"
-                label="Last Name"
-                name="lastName"
+                id="name"
+                label="Name"
+                name="name"
                 autoComplete="family-name"
               />
             </Grid>
@@ -84,7 +119,8 @@ const Register = () => {
             </Grid>
           </Grid>
           <Button
-            type="submit"
+         
+            type='submit'
             fullWidth
             variant="contained"
             sx={{ mt: 3, mb: 2 }}
@@ -100,7 +136,6 @@ const Register = () => {
           </Grid>
         </Box>
       </Box>
-      <Copyright sx={{ mt: 5 }} />
     </Container>
   </ThemeProvider>
   )
